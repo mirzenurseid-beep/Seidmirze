@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seid Mirzə | Riyaziyyata 1 addım at</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#07101f;color:#e8eefc;font-family:Arial,sans-serif;overflow-x:hidden;transition:.4s}
+#mathCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.35}
+header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}
+.hero h1{font-size:clamp(45px,9vw,90px);font-weight:300;letter-spacing:4px}
+.hero p{margin-top:15px;color:#7fa6ed;font-size:20px;letter-spacing:2px}.line{width:80px;height:1px;background:#5179bd;margin:30px auto}
+.menu-btn,.theme-btn{position:fixed;top:25px;width:55px;height:55px;border:1px solid #456aa8;background:rgba(7,16,31,.85);color:#8eb4ff;border-radius:50%;cursor:pointer;z-index:20;transition:.3s}
+.menu-btn{right:25px}.theme-btn{right:90px;font-size:23px}.menu-btn:hover,.theme-btn:hover{background:#102344;border-color:#78a2f5;transform:scale(1.05)}
+.menu-btn span{display:block;width:23px;height:2px;background:#8eb4ff;margin:5px auto}
+.menu{position:fixed;top:90px;right:25px;width:230px;background:rgba(8,18,36,.97);border:1px solid #263f6b;padding:15px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:.3s;z-index:19}
+.menu.active{opacity:1;visibility:visible;transform:translateY(0)}.menu a{display:block;padding:13px;color:#dce7ff;text-decoration:none;border-bottom:1px solid #182b4a}.menu a:last-child{border:0}.menu a:hover{background:#102344;color:#8eb4ff}
+section{padding:100px 20px;max-width:1000px;margin:auto}.section-title{font-size:32px;font-weight:300;margin-bottom:35px;color:#dce7ff}.section-title:after{content:"";display:block;width:50px;height:2px;background:#6088ce;margin-top:12px}
+.about-box,.preparation-item,.video-card{border:1px solid #1e3357;background:rgba(15,31,56,.45);transition:.3s}.about-box{padding:30px;line-height:1.8;color:#aebbd2}.about-name{font-size:24px;color:#e8eefc;margin-bottom:18px}.about-info{display:flex;flex-direction:column;gap:12px}.about-info a{color:#8eb4ff;text-decoration:none}.about-label{color:#7183a2}
+.preparation-list,.video-list{display:flex;flex-direction:column;gap:12px}.preparation-item{padding:18px 20px;color:#aebbd2}.preparation-item:hover{border-color:#6088ce;transform:translateX(4px)}.preparation-item strong{color:#dce7ff;font-weight:normal;font-size:17px}
+.video-list{gap:15px}.video-card{display:flex;align-items:center;gap:18px;padding:12px;text-decoration:none;color:white}.video-card:hover{border-color:#78a2f5;transform:translateY(-2px)}.video-card img{width:150px;height:84px;object-fit:cover;flex-shrink:0}.video-info b{display:block;color:#e8eefc;font-size:17px;font-weight:normal}.video-info span{display:block;margin-top:6px;color:#7c879e;font-size:13px}
+footer{text-align:center;padding:50px 20px;border-top:1px solid #172944;color:#62718b;font-size:14px}
+body.light{background:#f4f7fc;color:#17243a}body.light .menu-btn,body.light .theme-btn{background:#fff;border-color:#a9b9d3;color:#345d9d}body.light .menu{background:#fff;border-color:#c5d1e4}body.light .menu a{color:#263955;border-color:#e1e7f0}body.light .menu a:hover{background:#edf3fc;color:#315fa4}body.light .section-title{color:#1d2d46}body.light .about-box,body.light .preparation-item,body.light .video-card{background:rgba(255,255,255,.7);border-color:#d3ddea;color:#53627a}body.light .about-name,body.light .preparation-item strong,body.light .video-info b{color:#263955}
+@media(max-width:650px){section{padding:75px 15px}.video-card{gap:12px}.video-card img{width:110px;height:62px}.video-info b{font-size:15px}.video-info span{font-size:12px}.menu-btn{right:15px;top:15px}.theme-btn{right:80px;top:15px}.menu{right:15px;top:80px}}
+</style>
+</head>
+<body>
+<canvas id="mathCanvas"></canvas>
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button>
+<button class="menu-btn" onclick="toggleMenu()"><span></span><span></span></button>
+<nav class="menu" id="menu"><a href="#about" onclick="closeMenu()">Haqqımda</a><a href="#preparation" onclick="closeMenu()">Hazırlıqlarım</a><a href="#videos" onclick="closeMenu()">Videolarım</a></nav>
+<header><div class="hero"><h1>Seid Mirzə</h1><div class="line"></div><p>Riyaziyyata 1 addım at</p></div></header>
+<section id="about"><h2 class="section-title">Haqqımda</h2><div class="about-box"><div class="about-name">Seid Mirzə</div><div class="about-info">
+<div><span class="about-label">📍 Məkan:</span> Bakı şəhəri, Hövsan</div>
+<div><span class="about-label">▶ YouTube:</span> <a href="https://youtube.com/@riyaziyyat.seid.muellim?si=c-Q9jID9TcSU13X3">@riyaziyyat.seid.muellim</a></div>
+<div><span class="about-label">📷 Instagram:</span> <a href="https://www.instagram.com/seid_muellim/?utm_source=ig_web_button_share_sheet">@seid_muellim</a></div>
+<div><span class="about-label">🎵 TikTok:</span> <a href="https://www.tiktok.com/@seid.muellim">@seid.muellim</a></div>
+<div><span class="about-label">💬 WhatsApp:</span> <a href="https://wa.me/994709637000">070-963-70-00</a></div>
+</div></div></section>
+<section id="preparation"><h2 class="section-title">Hazırlıqlarım</h2><div class="preparation-list">
+<div class="preparation-item">🎓 <strong>9-cu sinif buraxılış</strong> hazırlığı</div>
+<div class="preparation-item">🎓 <strong>11-ci sinif buraxılış imtahanına</strong> hazırlıq</div>
+<div class="preparation-item">📝 <strong>Blok imtahanına</strong> hazırlıq</div>
+<div class="preparation-item">🏆 <strong>Riyaziyyat olimpiadasına</strong> hazırlıq</div>
+<div class="preparation-item">📖 <strong>Fərdi və qrup</strong> dərsləri</div>
+</div></section>
+<section id="videos"><h2 class="section-title">Videolarım</h2><div class="video-list">
+<a class="video-card" href="https://www.youtube.com/watch?v=zv6NskNlV50"><img src="https://img.youtube.com/vi/zv6NskNlV50/hqdefault.jpg"><div class="video-info"><b>1. Natural ədədlər izahı - 1</b><span>Natural ədədlər izahı</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=wUOs-ow9gf4"><img src="https://img.youtube.com/vi/wUOs-ow9gf4/hqdefault.jpg"><div class="video-info"><b>2. Natural ədədlər izahı - 2</b><span>Natural ədədlər izahı</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=RSXxIq3G6Qc"><img src="https://img.youtube.com/vi/RSXxIq3G6Qc/hqdefault.jpg"><div class="video-info"><b>3. Natural ədədlər izahı - 3</b><span>Natural ədədlər izahı</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=MVW8MQf68nI"><img src="https://img.youtube.com/vi/MVW8MQf68nI/hqdefault.jpg"><div class="video-info"><b>4. Natural ədədlər izahı - 4</b><span>Natural ədədlər izahı</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=87UFCO-Gmu8"><img src="https://img.youtube.com/vi/87UFCO-Gmu8/hqdefault.jpg"><div class="video-info"><b>5. 11-ci sinif DİM toplusu - Natural izah</b><span>11-ci sinif DİM toplusu</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=PsxuoreL_fY"><img src="https://img.youtube.com/vi/PsxuoreL_fY/hqdefault.jpg"><div class="video-info"><b>6. 11-ci sinif DİM toplusu - Natural izah</b><span>11-ci sinif DİM toplusu</span></div></a>
+<a class="video-card" href="https://www.youtube.com/watch?v=9-z6UWeKkfk"><img src="https://img.youtube.com/vi/9-z6UWeKkfk/hqdefault.jpg"><div class="video-info"><b>7. 11-ci sinif DİM toplusu - Natural izah</b><span>11-ci sinif DİM toplusu</span></div></a>
+</div></section>
+<footer>© 2026 Seid Mirzə | Riyaziyyata 1 addım at</footer>
+<script>
+function toggleMenu(){document.getElementById("menu").classList.toggle("active")}function closeMenu(){document.getElementById("menu").classList.remove("active")}
+function toggleTheme(){document.body.classList.toggle("light");document.getElementById("themeBtn").textContent=document.body.classList.contains("light")?"🌙":"☀️"}
+const canvas=document.getElementById("mathCanvas"),ctx=canvas.getContext("2d");let width,height,particles=[];
+function resizeCanvas(){width=canvas.width=innerWidth;height=canvas.height=innerHeight}resizeCanvas();addEventListener("resize",resizeCanvas);
+const symbols=["+","−","×","÷","=","π","√","x","y","∑","∞"];
+for(let i=0;i<50;i++)particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,speed:.15+Math.random()*.35,size:12+Math.random()*18,symbol:symbols[Math.floor(Math.random()*symbols.length)],opacity:.15+Math.random()*.3});
+function animateMath(){ctx.clearRect(0,0,width,height);particles.forEach(p=>{ctx.font=`${p.size}px Arial`;ctx.fillStyle=`rgba(90,135,210,${p.opacity})`;ctx.fillText(p.symbol,p.x,p.y);p.y-=p.speed;if(p.y<-30){p.y=height+30;p.x=Math.random()*width}});requestAnimationFrame(animateMath)}animateMath();
+</script>
+</body>
+</html>
